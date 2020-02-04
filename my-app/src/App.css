@@ -47,4 +47,86 @@ Link {
 }
 
 
+.container{
+  margin: 0rem 5rem 0 5rem; 
+}
 
+.stradum-list{
+  margin-top: 5rem;
+}
+
+
+.comment-header{
+  font-size: 2rem;
+  color:black
+}
+
+.main-details{
+  display: flex;
+  justify-content: center;
+}
+
+.ground-main{
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.stradium-image image{
+  width: 100%;
+}
+
+.ground-main .commnent{
+ margin: 0;
+}
+
+.history-header{
+  font-size: 2rem;
+  color:black;
+}
+
+.history .league-image img{
+  width: 6rem;
+}
+
+.history .leaque-info{
+  display: flex;
+  flex-direction: column;
+}
+
+.history  .leaque-info  .league{
+  color:black; 
+  font-weight: bold;
+}
+.history  .leaque-info  .league p{
+  margin: 0;
+}
+.history  .leaque-info  .league a p{
+  margin: 0;
+}
+
+.comment{
+ display: flex;
+ flex-direction: column;
+
+}
+.comment .comment-header p{
+  justify-content: left;
+  margin: .2rem 0 .1rem 0;
+  font-size: 1.5rem;
+}
+
+.comment-header{
+  left: 0;
+}
+.ground-title {
+  display: flex;
+  justify-content: left;
+  margin: 0;
+}
+.ground-title .tradium-name{
+  color:black; 
+  font-weight: bold;
+  font-size: 2rem;
+}

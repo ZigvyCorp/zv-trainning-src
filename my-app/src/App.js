@@ -21,9 +21,10 @@ function App() {
         <Switch>
           <Route exact path="/" component={Home}>
           </Route>
-          <Route exact path="/details" component={Details}>
+          {/* <Route exact path="/details" component={Details}>
             <Home />
-          </Route>
+          </Route> */}
+          <Route exact path="/stradium/:id" component={Details} />
         </Switch>
     </Router>
     </div>
