@@ -9,6 +9,7 @@ import HeaderPage from './components/Header';
 import store from './configureStore';
 import Home from './pages/Home';
 import Info from './pages/Info';
+import routes from './routes';
 
 
 const { Content } = Layout;
@@ -16,7 +17,7 @@ const { Content } = Layout;
 
 
 const AppWrapper = styled.div`
-
+    margin-top: 40px;
 `
 
 
@@ -28,12 +29,7 @@ function App() {
         <Router>
           <AppWrapper>
             <Switch>
-              <Route exact path={'/'}>
-                <Home />
-              </Route>
-              <Route path={'/info'}>
-                <Info />
-              </Route>
+              {routes.map(route => (<Route key={route.path} path={route.path} exact={route.exact}>{route.component}</Route>))}
             </Switch>
           </AppWrapper>
         </Router>

@@ -19,7 +19,7 @@ export default function HeaderPage() {
                         <Menu.Item key="1">FIND MATCH</Menu.Item>
                         <Menu.Item key="2">GROUNDS</Menu.Item>
                         <Menu.Item key="3">MESSAGE</Menu.Item>
-                        <Menu.Item key="3">UPCOMING</Menu.Item>
+                        <Menu.Item key="4">UPCOMING</Menu.Item>
                     </Menu>
                 </Header>
 

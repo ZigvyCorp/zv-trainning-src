@@ -1,16 +1,16 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from 'react';
+import Meta from '../../../components/Meta';
+
 
 const CommentItem = props => {
     return (
         <div>
-            
+            <Meta
+                {...props}
+                rate
+            />
         </div>
     )
-}
-
-CommentItem.propTypes = {
-
 }
 
 export default CommentItem

@@ -1,36 +1,64 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Row, Col, Rate } from 'antd'
+import { Row, Col } from 'antd'
 import Detail from './Detail'
 import Comment from './Comment/index'
+import Rate from '../../components/Rate'
+import History from './History'
+import { withRouter } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { FETCHING_GROUND } from '../../contants'
 
-const Info = props => {
-    return (
-        <div>
-            <Row>
-                <Col span={16}><img src={'https://dinhtung.net/wp-content/uploads/2018/09/cho-thue-san-banh-mini.jpg'} /></Col>
-                <Col span={8}>
-                    <h1>Old aTranfford Stadium</h1>
-                    <span>Sir Matt Busby Way, Stretford</span>
-                    <span>Manchester M16 0RA, UK</span>
-                    <Rate allowHalf defaultValue={2.5} />
-                    <Detail />
-                </Col>
-            </Row>
-            <Row>
-                <Col span={16}>
-                    <Comment />
-                </Col>
-                <Col span={8}>
-                    {/* <History /> */}
-                </Col>
-            </Row>
-        </div>
-    )
+class Info extends React.Component {
+    constructor(props) {
+        super(props)
+    }
+
+    componentDidMount() {
+        const { match: { params: { id } }, getGround } = this.props;
+        getGround(id);
+    }
+
+    render() {
+        const { ground } = this.props;
+        return (
+            <div>
+                <Row>
+                    <Col span={16}><img src={ground.urlImages} /></Col>
+                    <Col span={8}>
+                        <h1>{ground.name}</h1>
+                        <span>{ground.address}</span>
+                        <Rate allowHalf defaultValue={2.5} />
+                        <Detail price={ground.price} />
+                    </Col>
+                </Row>
+                <Row gutter={16}>
+                    <Col span={16}>
+                        <Comment />
+                    </Col>
+                    <Col span={8}>
+                        <History />
+                    </Col>
+                </Row>
+            </div>
+        )
+    }
 }
 
 Info.propTypes = {
 
 }
 
-export default Info
+const mapStateToProps = (state) => {
+    return {
+        ground: state.infoReducer.ground
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        getGround: (id) => dispatch({ type: FETCHING_GROUND, payload: { id } })
+    }
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Info))
