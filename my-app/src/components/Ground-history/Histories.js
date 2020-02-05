@@ -24,8 +24,8 @@ export default class Histories extends Component {
         })
         
         return (
-            <section >
-                <div >
+            <section  className="comment">
+                <div className="comment-header">
                     <p>{`History (${histories.length})`}</p>
                 </div>
                 <br/>

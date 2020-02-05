@@ -519,4 +519,12 @@
   
   
 //   Type a message
+
+
+
+///1
+// lam them cai render list
+
+///2
+//lam cai redux
   
