@@ -15,15 +15,21 @@ export default function Stradium ({ stradium}) {
                 cover={<img alt="stradium" src={imageURL} />}
                 >
                 <div className="card-detail">
+                    <div className="round-title">
+                            <h2>
+                                {title}
+                            </h2>
+                        </div>
                 <Row type="flex">
-                <Col span={16} >
-                    <Meta  className='ground-detail' title={title}
+                <Col span={20} >
+                    <Meta  
                     description={description}
                     />
                 </Col>
-                <Col span={8} >
-                    <div className="ground-price">
-                        {price} 
+                <Col span={4} >
+                    <div className="price-top">
+                    <h6>${price}.00</h6>
+                    <p>/hour</p>
                     </div>
                 </Col>
                 </Row>

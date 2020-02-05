@@ -1,18 +1,27 @@
-import {Link} from 'react-router-dom';
-import React, { Component } from 'react';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import { FaAlignRight } from "react-icons/fa";
+
+export default class Navbar extends Component {
 
 
-export default class NavBar extends Component {
   render() {
     return (
-      <div>
-         <nav className='Nav'>
-          <ul>
+      <nav className="navbar">
+        <div className="nav-center">
+        <div className="nav-header">
+            <Link to="/">
+              
+            </Link>
+          </div>
+          <ul
+            className= "nav-links show-nav"
+          >
             <li>
               <Link to="#">FIND MATCH</Link>
             </li>
             <li>
-              <Link to="#">GROUNDS</Link>
+              <Link to="/">GROUNDS</Link>
             </li>
             <li>
               <Link to="#">MESSAGE</Link>
@@ -21,9 +30,8 @@ export default class NavBar extends Component {
               <Link to="#">UPCOMING</Link>
             </li>
           </ul>
-        </nav>
-      </div>
-    )
+        </div>
+      </nav>
+    );
   }
 }
-

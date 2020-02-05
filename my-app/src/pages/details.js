@@ -6,12 +6,13 @@ import Histories from '../components/Ground-history/Histories';
 import { PageHeader, Button, Descriptions } from 'antd';
 import { Radio} from 'antd';
 import { Card,Comment, Icon, Tooltip, Avatar } from 'antd';
+import { Rate } from 'antd';
 
 export default class details extends Component {
     
     state = {
         stradium:"Old Trafford",
-        description:'We supply a series of design principles',
+        description:"Sir Matt Busby Way, Stretford, Manchester M16 0RA, United Kingdom",
         onwer:'Han Solo',
         price:25
       }
@@ -47,29 +48,37 @@ export default class details extends Component {
                         <div className='tradium-name'>
                            <p >{stradium}</p>
                         </div>
+                        <div className="tradium-address">
                         <p>{description}</p>
+                        </div>
+                        <Rate allowHalf defaultValue={4.5}/>
+                        <br/>
                     </section>
                     <br/>
                     <section className="onwer">
                     <Comment
-                            author={<a>{onwer}</a>}
+                        author={<div className='user-info'>
+                             <a>{onwer}</a>
+                             <p>Onwer</p>
+                           </div>
+                         }
                             avatar={
                             <Avatar
                                 src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
                                 alt="Han Solo"
                             />
-                            }
+                            } 
                             content={
-                            <p>
-                                We supply a series of design principles, practical patterns and high quality design
-                                resources (Sketch and Axure), to help people create their product prototypes beautifully
-                                and efficiently.
-                            </p>
-                            }
+                                <p className='onwer-content'>
+                                    We supply a series of design principles, practical patterns and high quality design
+                                   
+                                </p>
+                                }
                         />
-                        <div className="price">
-                            <a href="">{price}</a>
+                        <div className="price-ground">
+                            <h6>${price}.00&nbsp;/hour</h6>
                         </div>
+
                     </section>
                     <section className="featured-rooms">
                                  <Radio.Group  >

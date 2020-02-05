@@ -7,39 +7,100 @@
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Navbar */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 0.75rem 2rem;
+  background: black;
+  z-index: 1;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.nav-header {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  justify-content: space-between;
+}
+.nav-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+.nav-icon {
+  font-size: 1.5rem;
   color: white;
 }
-
-.App-link {
-  color: #61dafb;
+.nav-links {
+  height: 0;
+  overflow: hidden;
+  list-style-type: none;
+  color: white;
+}
+.nav-links a {
+  display: block;
+  text-decoration: none;
+  padding: 1rem 0;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 600;
+  color: white
+}
+.nav-links a:hover {
+  color: blue
 }
 
-Link {
-  color:white
+.show-nav {
+  height: 100px;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media screen and (min-width: 768px) {
+  .nav-btn {
+    display: none;
   }
-  to {
-    transform: rotate(360deg);
+  .nav-center {
+    max-width: 1170px;
+    margin: 0 auto;
+    display: flex;
+  }
+  .nav-links {
+    height: auto;
+    display: flex;
+    margin-left: 4rem;
+  }
+  .nav-links a {
+    margin: 0 1rem;
+    padding: 0.5rem 0;
   }
 }
+/*end of navbar */
+
+
+/* list */
+.stradiumlist {
+  margin-top:1rem;
+  padding: 5rem 0m;
+}
+.list-center {
+  width: 80vw;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-row-gap: 2rem;
+  grid-column-gap: 30px;
+}
+
+@media screen and (min-width: 776px) {
+  .list-center {
+    width: 90vw;
+  }
+}
+@media screen and (min-width: 992px) {
+  .list-center {
+    width: 95vw;
+    max-width: 1170px;
+  }
+}
+/*end of list */
 
 
 .Nav{
@@ -48,18 +109,14 @@ Link {
 
 
 .container{
-  margin: 0rem 5rem 0 5rem; 
+  margin: 5rem 5rem 0 5rem; 
 }
 
-.stradum-list{
+/* .stradum-list{
   margin-top: 5rem;
-}
+} */
 
 
-.comment-header{
-  font-size: 2rem;
-  color:black
-}
 
 .main-details{
   display: flex;
@@ -121,12 +178,170 @@ Link {
   left: 0;
 }
 .ground-title {
+  padding:1rem 0 0 0;
+  padding-top: 1rem;
+  position: relative;
   display: flex;
   justify-content: left;
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
 }
 .ground-title .tradium-name{
   color:black; 
+  margin-top: 0;
   font-weight: bold;
   font-size: 2rem;
 }
+
+.tradium-address{
+  font-size: .8rem;
+}
+
+
+/* Home header*/
+.search-ground{
+  background:  #aab4bf;
+}
+
+
+.ant-select-selection.ant-select-selection--single {
+  border: none
+}
+
+
+
+.ant-page-header-heading-extra{
+ justify-content: space-evenly;
+}
+
+
+.ant-select-selection__placeholder, .ant-select-search__field__placeholder {
+  color:black;
+}
+
+.ant-select-selection.ant-select-selection>Option{
+  color:black;
+}
+
+.ant-page-header-heading-extra > * {
+  margin-left: 8px;
+}
+.ant-input-affix-wrapper {
+  border-radius: 10rem;
+}
+
+.ant-input-search-icon{
+ left:0
+}
+
+.ant-input{
+  display: flex;
+}
+
+.ant-card-body{
+  display: flex;
+  justify-self: left;
+  height: 120px;
+  width: 100%;
+  padding: 0;
+}
+
+.ant-card-body .card-detail{
+  margin:0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+
+.round-title{
+  width: 100%;
+}
+ .price-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: green;
+    padding:  0 0.6rem 0.5rem;
+    border-bottom-right-radius: 1rem;
+    font-size: 0.6rem;
+    text-align: center;
+  }
+  .price-top h6 {
+    color: green;
+    margin-bottom: 0;
+    font-size: 1.2rem;
+    font-weight: 300;
+  }
+
+  .anticon {
+    font-size: 1rem;
+  }
+
+/* Comment */
+
+  .user-info{
+    display: inline;
+    justify-content: left;
+    text-align: left;
+  }
+  .user-info a{
+    color: black;
+    font-weight: bold;
+    font-size: 1rem;
+  }
+
+  .comment-content{
+    margin: .3rem auto 0 auto;
+    color: black;
+    font-size: .8rem;
+  }
+  .ant-comment-content-detail p{
+    padding: 0;
+  }
+  .comment{
+    margin-top: 2rem;
+    display: flex;
+    text-align: left;
+  }
+  .comment-header{
+    font-size: 2rem;
+    color:black
+  }
+  
+  /*End Comment*/
+
+  /**Detail**/
+.onwer-content{
+  text-align: left;
+  margin-left: 0;
+  position: relative;
+}
+.ant-comment-content-detail{
+  text-align: left;
+}
+
+
+.price-ground {
+  position: relative;
+  top: 0;
+  left: 0;
+  color: green;
+  padding:  0 0.6rem 0.5rem;
+  border-bottom-right-radius: 1rem;
+  font-size: 0.6rem;
+  text-align: left;
+}
+.price-ground h6 {
+  color: green;
+  margin-bottom: 0;
+  font-size: 1.2rem;
+  font-weight: 300;
+}
+  /*end detail*/
+
+    
+  
