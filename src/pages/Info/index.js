@@ -8,6 +8,7 @@ import History from './History'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { FETCHING_GROUND } from '../../contants'
+import { GroundAction } from '../../actions/ground.action'
 
 class Info extends React.Component {
     constructor(props) {
@@ -51,13 +52,13 @@ Info.propTypes = {
 
 const mapStateToProps = (state) => {
     return {
-        ground: state.infoReducer.ground
+        ground: state.groundReducer.ground
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        getGround: (id) => dispatch({ type: FETCHING_GROUND, payload: { id } })
+        getGround: (id) => dispatch(GroundAction.get(id))
     }
 }
 

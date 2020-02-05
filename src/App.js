@@ -10,6 +10,7 @@ import store from './configureStore';
 import Home from './pages/Home';
 import Info from './pages/Info';
 import routes from './routes';
+import Toast from './components/Toast';
 
 
 const { Content } = Layout;
@@ -25,6 +26,7 @@ function App() {
   return (
     <Provider store={store}>
       <HeaderPage />
+      <Toast />
       <Content style={{ padding: '0 50px' }}>
         <Router>
           <AppWrapper>

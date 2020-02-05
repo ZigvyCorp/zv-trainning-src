@@ -1,7 +1,5 @@
-import homeService from './home.service'
-import infoService from './info.service'
+import groundService from './ground.service'
 
 export default {
-    homeService,
-    infoService
+    groundService
 }

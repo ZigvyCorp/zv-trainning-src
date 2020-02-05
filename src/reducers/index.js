@@ -1,8 +1,8 @@
 import { combineReducers } from "redux"
-import homeReducer from './home.reducer'
-import infoReducer from './info.reducer'
+import groundReducer from './ground.reducer'
+import notificationReducer from './notification.reducer'
 
 export default combineReducers({
-    homeReducer,
-    infoReducer
+    groundReducer,
+    notificationReducer
 })
