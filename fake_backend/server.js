@@ -8,28 +8,34 @@ app.use(cors())
 const grounds = require('./data.json')
 
 app.get('/api/grounds', (req, res) => {
-    const { sort_by, filter, search } = req.query;
-    let groundsResult = grounds;
+    let rnd = randomIntFromInterval(0, 10)
+    if (rnd >= 8) {
+        const { sort_by, filter, search } = req.query;
+        let groundsResult = grounds;
 
-    if (filter) {
-        let [min, max] = filter.split('-')
-        groundsResult = groundsResult.filter((value) => filterPrice(value, min, max))
-    }
-
-    if (search) {
-        groundsResult = groundsResult.filter(value => value.name.toLowerCase().includes(search.toLowerCase()))
-    }
-
-    if (sort_by) {
-        let sortColumns = sort_by.split(',')
-        for (let column of sortColumns) {
-            let type = column[0];
-            let col = column.slice(1, column.length)
-            groundsResult = groundsResult.sort((a, b) => compare(a, b, type, col))
+        if (filter) {
+            let [min, max] = filter.split('-')
+            groundsResult = groundsResult.filter((value) => filterPrice(value, min, max))
         }
+
+        if (search) {
+            groundsResult = groundsResult.filter(value => value.name.toLowerCase().includes(search.toLowerCase()))
+        }
+
+        if (sort_by) {
+            let sortColumns = sort_by.split(',')
+            for (let column of sortColumns) {
+                let type = column[0];
+                let col = column.slice(1, column.length)
+                groundsResult = groundsResult.sort((a, b) => compare(a, b, type, col))
+            }
+        }
+        console.log(req.query.sort_by)
+        res.send(groundsResult)
+    } else {
+        res.status(404)
+            .send('Not found');
     }
-    console.log(req.query.sort_by)
-    res.send(groundsResult)
 })
 app.get('/api/ground/:id', (req, res) => {
     console.log("AHIHI")
@@ -60,4 +66,8 @@ function compare(a, b, type, name) {
 
 function filterPrice(value, min, max) {
     return (value.price > min && value.price < max)
+}
+
+function randomIntFromInterval(min, max) { // min and max included 
+    return Math.floor(Math.random() * (max - min + 1) + min);
 }

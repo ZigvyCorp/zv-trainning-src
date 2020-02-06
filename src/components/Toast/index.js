@@ -3,20 +3,26 @@ import { ToastContainer, toast } from 'react-toastify'
 import { Button } from 'antd'
 import 'react-toastify/dist/ReactToastify.css';
 import { connect } from 'react-redux';
+import { NotiAction } from '../../actions/notification.action';
+import { TIME_RETRY, MAX_RETRIES } from '../../config';
 
-const Toast = ({ isOpenRetry }) => {
-    console.log(isOpenRetry)
-    const retry = () => toast.error('Retry ', {
+const Toast = ({ isOpenRetry, onClose, duration, msg }) => {
+    let toastId = null;
+    console.log(msg)
+    const retry = () => toastId = toast.error(msg, {
         position: "top-right",
-        autoClose: 2000,
+        autoClose: TIME_RETRY * duration,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
         draggable: true,
+        onClose: () => { onClose() }
     })
 
     if (isOpenRetry) {
         retry()
+    } else {
+        toast.update(toastId, { autoClose: 0 });
     }
 
     return (
@@ -24,8 +30,17 @@ const Toast = ({ isOpenRetry }) => {
         />
     )
 }
-const mapStateToProps = (state) => ({
-    isOpenRetry: state.notificationReducer.isOpen
+const mapStateToProps = (state) => {
+    console.log(state)
+    return {
+        isOpenRetry: state.notificationReducer.isOpen,
+        duration: state.notificationReducer.duration,
+        msg: state.notificationReducer.message
+    }
+}
+
+const mapDispatchToProps = (dispatch) => ({
+    onClose: () => dispatch(NotiAction.close())
 })
 
-export default connect(mapStateToProps)(Toast)
+export default connect(mapStateToProps, mapDispatchToProps)(Toast)

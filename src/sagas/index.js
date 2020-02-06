@@ -4,7 +4,7 @@ import groundSaga from "./ground.saga";
 
 export default function* rootSaga() {
     yield all([
-        groundSaga.watchGetAll(),
+        groundSaga.getAll(),
         groundSaga.watchGet()
     ])
 }

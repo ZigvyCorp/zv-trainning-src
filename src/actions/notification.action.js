@@ -1,7 +1,8 @@
 import { OPEN_NOTIFICATION, CLOSE_NOTIFICATION } from "../contants";
 
-function open() {
-    return { type: OPEN_NOTIFICATION }
+function open({ duration, message }) {
+    console.log(message)
+    return { type: OPEN_NOTIFICATION, payload: { duration, message } }
 }
 
 function close() {
