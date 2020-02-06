@@ -23,7 +23,11 @@ const SearchBar = props => {
             search: ''
         })
 
-    const handleChange = (name) => (value) => {
+    const handleChange = (name) => (e) => {
+        let value = e;
+        if (typeof e === 'object') {
+            value = e.target.value
+        }
         setUserInput({ [name]: value })
     }
 
@@ -32,7 +36,7 @@ const SearchBar = props => {
         const { filterPrice, sortName, sortPrice, search } = userInput
         const data = {
             filter: filterPrice,
-            search,
+            search: search,
             sort_by: [sortPrice + 'price', sortName + 'name']
         }
         onSearch(data)

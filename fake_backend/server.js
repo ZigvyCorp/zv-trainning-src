@@ -9,7 +9,7 @@ const grounds = require('./data.json')
 
 app.get('/api/grounds', (req, res) => {
     let rnd = randomIntFromInterval(0, 10)
-    if (rnd >= 8) {
+    if (rnd >= 0) {
         const { sort_by, filter, search } = req.query;
         let groundsResult = grounds;
 
@@ -19,6 +19,7 @@ app.get('/api/grounds', (req, res) => {
         }
 
         if (search) {
+            console.log(search)
             groundsResult = groundsResult.filter(value => value.name.toLowerCase().includes(search.toLowerCase()))
         }
 
@@ -30,7 +31,6 @@ app.get('/api/grounds', (req, res) => {
                 groundsResult = groundsResult.sort((a, b) => compare(a, b, type, col))
             }
         }
-        console.log(req.query.sort_by)
         res.send(groundsResult)
     } else {
         res.status(404)
@@ -38,7 +38,6 @@ app.get('/api/grounds', (req, res) => {
     }
 })
 app.get('/api/ground/:id', (req, res) => {
-    console.log("AHIHI")
     const { id } = req.params;
     const ground = grounds.filter(ground => ground.id == parseInt(id))[0]
     if (ground)

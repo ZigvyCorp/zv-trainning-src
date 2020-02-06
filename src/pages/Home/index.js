@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import ListItem from './ListItem'
 import SearchBar from './SearchBar'
 import { Row, Col, notification } from 'antd'
@@ -12,32 +12,27 @@ const StyledCol = styled(Col)`
 `
 
 
-class Home extends React.Component {
-    constructor(props) {
-        super(props)
-    }
+const Home = (props) => {
+    useEffect(() => {
+        props.getRounds();
+    }, [])
 
-    componentDidMount() {
-        this.props.getRounds();
-    }
-
-    render() {
-        const { grounds } = this.props;
-        return (
-            <div>
-                <SearchBar onSearch={(data) => {
-                    this.props.getRounds(data)
-                }} />
-                <Row type="flex">
-                    {grounds.map((ground) => (
-                        <StyledCol key={ground.id} span={8}>
-                            <ListItem id={ground.id} img={ground.urlImages} name={ground.name} address={ground.address} price={ground.price} />
-                        </StyledCol>
-                    ))}
-                </Row>
-            </div>
-        )
-    }
+    const { grounds } = props;
+    return (
+        <div>
+            <SearchBar onSearch={(data) => {
+                console.log(data)
+                props.getRounds(data)
+            }} />
+            <Row type="flex">
+                {grounds.map((ground) => (
+                    <StyledCol key={ground.id} span={8}>
+                        <ListItem id={ground.id} img={ground.urlImages} name={ground.name} address={ground.address} price={ground.price} />
+                    </StyledCol>
+                ))}
+            </Row>
+        </div>
+    )
 }
 
 export default Home
