@@ -1,7 +1,10 @@
 
 import {FILTER_GROUNDS ,FILTER_GROUNDS_SUCCESS,FILTER_GROUNDS_ERROR,
     SEARCH_GROUNDS,SEARCH_GROUNDS_SUCCESS,SEARCH_GROUNDS_ERROR 
-    ,GET_GROUNDS,GET_GROUNDS_SUCCESS ,GET_GROUNDS_ERROR} from '../actions/styles';
+    ,GET_GROUNDS,GET_GROUNDS_SUCCESS ,GET_GROUNDS_ERROR
+    ,SORT_GROUNDS,SORT_GROUNDS_SUCCESS,SORT_GROUNDS_ERROR,
+    NAME_SORT,NAME_SORT_SUCCESS,NAME_SORT_ERROR,PRICE_SORT,PRICE_SORT_SUCCESS,PRICE_SORT_ERROR
+} from '../actions/styles';
 
 
 let initalListGrounds=[
@@ -49,30 +52,41 @@ let initalListGrounds=[
     }
 ]
  
-const GroundReducers = (grounds= initalListGrounds, action) => {
+let initalState={
+    grounds: initalListGrounds,
+    nameSorting:-1,
+    priceSorting:-1,
+    price: 'all',
+    search:''
+  }
+
+export default function GroundReducers(state = initalState, action) {
     switch (action.type) {
-        //Get data
-        case SEARCH_GROUNDS_SUCCESS:
-            {
-                let result=grounds.filter(ground=>{
-                    return(ground.title.includes(action.searchValue))
-                })
-                return grounds=result;
-                
+      case NAME_SORT_SUCCESS:
+        return {
+          ...state,
+          nameSorting: action.value,
+        };
+      case PRICE_SORT_SUCCESS:
+            return {
+              ...state,
+              priceSorting: action.value,
+            };
+      case SEARCH_GROUNDS_SUCCESS:
+            return{
+                ...state,
+                search:action.searchValue
             }
-
-        //search
-        case GET_GROUNDS_SUCCESS :
-            return grounds;
-        //filter
-        case FILTER_GROUNDS:
-            return action.Danh_sach_Tivi;
-
-        case FILTER_GROUNDS_ERROR:
-            return [];
-            
-        default:
-            return grounds;
+        case FILTER_GROUNDS_SUCCESS:            
+        return{
+            ...state,
+             price:action.price
+        }
+        case GET_GROUNDS_SUCCESS:
+            return{
+                ...initalState
+            }
+      default:
+        return state;
     }
 }
-export default GroundReducers;

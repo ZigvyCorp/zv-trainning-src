@@ -21,12 +21,17 @@ export default function History({ history}) {
                         <div className="league">
                             <p>{league}</p>
                         </div>
-                        <a href="#">{teams }
+                        <div className="history-block">
+                            <a className='team-history' href="#">{teams }
+                                </a>
                             <p>Team</p>
-                        </a>
-                        <a href="#">{players}
+                       </div>
+                       <div className="history-block">
+                            <a className='team-history' href="#">{players}
+                                </a>
                             <p>players</p>
-                        </a>
+                       </div>
+                       
                     </div>
                 </Col>
             </Row>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Stradiums from '../components/List/Stradiums';
-import {SearchGrounds} from '../actions/index';
+import {SearchGrounds,FilterGrounds,NameSort,PriceSort} from '../actions/index';
 
 import { PageHeader, Button, Descriptions } from 'antd';
 import { Select } from 'antd';
@@ -12,7 +12,7 @@ const { Option } = Select;
 
 class home extends Component {
     render() {
-        const {onSearchGrounds} =this.props;
+        const {onSearchGrounds,onFilterPrice,onNameSort,onPriceSort} =this.props;
         return (
             <div className='container'>
                 <div>
@@ -20,40 +20,44 @@ class home extends Component {
                    
                     title="Grounds"
                     extra={[
-                        <Select
-                        showSearch
-                        style={{ width: 100 }}
-                        placeholder="Nearest"
-                        optionFilterProp="children"
-                      >
-                        <Option value="jack">Jack</Option>
-                        <Option value="lucy">Lucy</Option>
-                        <Option value="tom">Tom</Option>
-                      </Select>,
-                       <Select
+                    <Select
                        showSearch
-                       style={{ width: 100 }}
+                       style={{ width: 150}}
                        placeholder="Price Range"
                        optionFilterProp="children"
-                     >
-                       <Option value="1">0-10</Option>
-                       <Option value="2">10-20</Option>
-                       <Option value="3">more than 10</Option>
+                       onChange={onFilterPrice}
+                        >
+                       <Option value="all">No filter</Option>
+                       <Option value="0_10">0-10 $</Option>
+                       <Option value="10_20">10-20 $</Option>
+                       <Option value="20_100">More than 20 $</Option>
 
                      </Select>,
+                        <Select
+                        showSearch
+                        style={{ width: 150 }}
+                        placeholder="Sort by name"
+                        optionFilterProp="children"
+                        onChange={onNameSort}
+                        >
+                        <Option value="-1">No sorting</Option>
+                        <Option value="1">Ascending</Option>
+                        <Option value="0">Descending</Option>
+                      </Select>,
                      <Select
                         showSearch
-                        style={{ width: 100 }}
-                        placeholder="Price Range"
+                        style={{ width: 150 }}
+                        placeholder="Sort by Price"
                         optionFilterProp="children"
+                        onChange={onPriceSort}
                       >
-                        <Option value="jack">Jack</Option>
-                        <Option value="lucy">Lucy</Option>
-                        <Option value="tom">Tom</Option>
+                        <Option value="-1">No sorting</Option>
+                        <Option value="1">Ascending</Option>
+                        <Option value="0">Descending</Option>
  
                       </Select>,
                        <Search className='search-ground'
-                       placeholder="search ground"
+                       placeholder="search by name"
                        onSearch={onSearchGrounds}
                        style={{ width: 200 }}
                      />
@@ -82,6 +86,15 @@ const mapDispatchToProps = dispatch =>{
     return {
         onSearchGrounds: (searchValue)=>{
             dispatch(SearchGrounds(searchValue));
+        },
+        onFilterPrice:(value)=>{
+            dispatch(FilterGrounds(value));
+        },
+        onNameSort:(value)=>{
+            dispatch(NameSort(value))
+        },
+        onPriceSort:(value)=>{
+            dispatch(PriceSort(value))
         }
     }
 }

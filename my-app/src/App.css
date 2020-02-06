@@ -150,6 +150,7 @@
 .history .leaque-info{
   display: flex;
   flex-direction: column;
+  margin-left: 3rem;
 }
 
 .history  .leaque-info  .league{
@@ -162,7 +163,16 @@
 .history  .leaque-info  .league a p{
   margin: 0;
 }
+.team-history{
+  text-align: left;
+}
 
+.history-block a,p{
+  display: inline-block;
+}
+.history-block p{
+   color:black;
+}
 .comment{
  display: flex;
  flex-direction: column;

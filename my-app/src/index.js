@@ -12,11 +12,12 @@ import allReducers from './reducers/index';
 //Redux saga
 import createSagaMiddleware from 'redux-saga';
 import rootSaga from './sagas/root';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
 //Middleware
 const sagaMiddleware=createSagaMiddleware();
 
-let store =createStore(allReducers, applyMiddleware(sagaMiddleware));
+let store =createStore(allReducers, composeWithDevTools(applyMiddleware(sagaMiddleware)));
 
 ReactDOM.render(
     <Provider store={store}>
