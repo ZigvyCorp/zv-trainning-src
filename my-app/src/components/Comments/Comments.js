@@ -2,8 +2,6 @@
 import React, { Component } from 'react';
 import GroundComment from './Comment';
 
-
-
 export default class Comments extends Component {
     constructor(props) {
         super(props);

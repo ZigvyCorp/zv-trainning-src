@@ -171,6 +171,7 @@
   display: inline-block;
 }
 .history-block p{
+
    color:black;
 }
 .comment{
@@ -239,6 +240,7 @@
   margin-left: 8px;
 }
 .ant-input-affix-wrapper {
+  background-color: cadetblue;
   border-radius: 10rem;
 }
 

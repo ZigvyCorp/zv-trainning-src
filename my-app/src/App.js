@@ -9,7 +9,8 @@ import {
 import 'antd/dist/antd.css';
 
 //Page
-import Home from './pages/home';
+import Home from './containers/homeContainer';
+// import Home from './pages/home';
 import Details from './pages/details';
 import NavBar from './components/Header/NavBar';
 

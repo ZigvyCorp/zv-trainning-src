@@ -6,54 +6,9 @@ import {FILTER_GROUNDS ,FILTER_GROUNDS_SUCCESS,FILTER_GROUNDS_ERROR,
     NAME_SORT,NAME_SORT_SUCCESS,NAME_SORT_ERROR,PRICE_SORT,PRICE_SORT_SUCCESS,PRICE_SORT_ERROR
 } from '../actions/styles';
 
-
-let initalListGrounds=[
-    {
-        "id":1,
-        "imageURL":"https://upload.wikimedia.org/wikipedia/commons/e/ec/Tottenham_Hotspur_Stadium_June_2019%2C_view_from_East.jpg",
-        "title":"Old trafford",
-        "description":"Sir Matt Busby Way, Stretford, Manchester M16 0RA, United Kingdom",
-        "price":5 
-    },
-    {
-        "id":2,
-        "imageURL":"https://upload.wikimedia.org/wikipedia/commons/e/ec/Tottenham_Hotspur_Stadium_June_2019%2C_view_from_East.jpg",
-        "title":"Stamford Bridge",
-        "description":"Sir Matt Busby Way, Stretford, Manchester M16 0RA, United Kingdom",
-        "price":10
-    },
-    {
-        "id":3,
-        "imageURL":"https://upload.wikimedia.org/wikipedia/commons/e/ec/Tottenham_Hotspur_Stadium_June_2019%2C_view_from_East.jpg",
-        "title":"Old trafford",
-        "description":"Sir Matt Busby Way, Stretford, Manchester M16 0RA, United Kingdom",
-        "price":15
-    },
-    {
-        "id":4,
-        "imageURL":"https://upload.wikimedia.org/wikipedia/commons/e/ec/Tottenham_Hotspur_Stadium_June_2019%2C_view_from_East.jpg",
-        "title":"Old trafford",
-        "description":"Sir Matt Busby Way, Stretford, Manchester M16 0RA, United Kingdom",
-        "price":20
-    },
-    {
-        "id":5,
-        "imageURL":"https://upload.wikimedia.org/wikipedia/commons/e/ec/Tottenham_Hotspur_Stadium_June_2019%2C_view_from_East.jpg",
-        "title":"Old trafford",
-        "description":"Sir Matt Busby Way, Stretford, Manchester M16 0RA, United Kingdom",
-        "price":25
-    },
-    {
-        "id":6,
-        "imageURL":"https://upload.wikimedia.org/wikipedia/commons/e/ec/Tottenham_Hotspur_Stadium_June_2019%2C_view_from_East.jpg",
-        "title":"Old trafford",
-        "description":"Sir Matt Busby Way, Stretford, Manchester M16 0RA, United Kingdom",
-        "price":30
-    }
-]
  
 let initalState={
-    grounds: initalListGrounds,
+    grounds: [],
     nameSorting:-1,
     priceSorting:-1,
     price: 'all',
@@ -75,16 +30,19 @@ export default function GroundReducers(state = initalState, action) {
       case SEARCH_GROUNDS_SUCCESS:
             return{
                 ...state,
-                search:action.searchValue
+                grounds:action.grounds,
+                search:action.search
             }
-        case FILTER_GROUNDS_SUCCESS:            
+     case FILTER_GROUNDS_SUCCESS:            
         return{
             ...state,
-             price:action.price
+            grounds:action.grounds,
+            price:action.price
         }
         case GET_GROUNDS_SUCCESS:
             return{
-                ...initalState
+                ...state,
+                grounds:action.grounds
             }
       default:
         return state;

@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-import Stradiums from '../components/List/Stradiums';
-import {SearchGrounds,FilterGrounds,NameSort,PriceSort} from '../actions/index';
+import Stradiums from '../containers/stradiumsContainer';
 
 import { PageHeader, Button, Descriptions } from 'antd';
 import { Select } from 'antd';
 import { Input } from 'antd';
-import {connect} from 'react-redux';
 
 const { Search } = Input;
 const { Option } = Select;
@@ -74,30 +72,5 @@ class home extends Component {
     }
 }
 
-
-const mapStateToProps = state =>{
-    console.log(state);
-    return {
-        grounds: state.grounds? state.grounds :[]
-    }
-}
-
-const mapDispatchToProps = dispatch =>{
-    return {
-        onSearchGrounds: (searchValue)=>{
-            dispatch(SearchGrounds(searchValue));
-        },
-        onFilterPrice:(value)=>{
-            dispatch(FilterGrounds(value));
-        },
-        onNameSort:(value)=>{
-            dispatch(NameSort(value))
-        },
-        onPriceSort:(value)=>{
-            dispatch(PriceSort(value))
-        }
-    }
-}
-
-export default connect(mapStateToProps,mapDispatchToProps)(home);
+export default home;
 
