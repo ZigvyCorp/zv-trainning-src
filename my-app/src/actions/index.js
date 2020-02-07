@@ -1,4 +1,4 @@
-import  { FILTER_GROUNDS ,SEARCH_GROUNDS,GET_GROUNDS,SORT_GROUNDS,NAME_SORT,PRICE_SORT} from './styles';
+import  { FILTER_GROUNDS ,SEARCH_GROUNDS,GET_GROUNDS,NAME_SORT,PRICE_SORT,GET_SINGLE_GROUND} from './styles';
 
 
 export const SearchGrounds = (searchValue) =>{
@@ -34,5 +34,12 @@ export const PriceSort=(value)=>{
     return{
         type:PRICE_SORT,
         value:value,
+    }
+}
+
+export const GetSingleGrounds=(id)=>{
+    return{
+        type:GET_SINGLE_GROUND,
+        id:id
     }
 }

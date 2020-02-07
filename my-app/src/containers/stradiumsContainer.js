@@ -53,16 +53,3 @@ function getVisibleStradiums(price,search,nameSorting,priceSorting, grounds) {
 
 export default connect(mapStateToProps,mapDispatchToProps)(Stradiums);
 
-
-// .filter(g => {
-//     if (price=="all"){
-//         return g
-//     }
-//     let milestones =price.split('_');
-//     let floor =Number(milestones[0]);
-//     let ceil =Number(milestones[1]);
-//     return g.price >= floor && g.price <=ceil;
-//   })
-//     .filter(g=>{
-//         return(g.title.toLowerCase().includes(search.toLowerCase()))
-//     })

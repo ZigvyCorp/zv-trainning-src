@@ -19,6 +19,7 @@ class home extends Component {
                     title="Grounds"
                     extra={[
                     <Select
+                       key='price-filter'
                        showSearch
                        style={{ width: 150}}
                        placeholder="Price Range"
@@ -32,6 +33,7 @@ class home extends Component {
 
                      </Select>,
                         <Select
+                        key ='name-sort'
                         showSearch
                         style={{ width: 150 }}
                         placeholder="Sort by name"
@@ -43,6 +45,7 @@ class home extends Component {
                         <Option value="0">Descending</Option>
                       </Select>,
                      <Select
+                        key='price-sort'
                         showSearch
                         style={{ width: 150 }}
                         placeholder="Sort by Price"

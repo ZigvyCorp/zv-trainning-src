@@ -3,6 +3,10 @@ import Stradium from './Stradium';
 
  class Stradiums extends Component {
     
+    constructor(props) {
+        super(props);
+      }
+    
     componentDidMount(){
         this.props.onGetGrounds();
     }
@@ -14,18 +18,14 @@ import Stradium from './Stradium';
     render() {
         console.log(this.props);
         const {currentGrounds} =this.props;
-        let grounds=currentGrounds;
-        let markup = grounds.map(stradium => {
-            return <Stradium key={stradium.id} stradium={stradium}/>
-        })
+
         return (
             <section className="stradiumlist">
-            <div className="list-center">
-                 {markup}
-                 {/* {grounds.map(stradium => {
-                  return <Stradium key={stradium.id} stradium={stradium}/>}
-                 )} */}
-            </div>
+                <div className="list-center">
+                    {currentGrounds.map(stradium => {
+                    return this.renderStradiums(stradium)}
+                    )}
+                </div>
           </section> 
         );
     }

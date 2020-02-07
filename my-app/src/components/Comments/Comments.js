@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react';
 import GroundComment from './Comment';
 
@@ -24,14 +23,12 @@ export default class Comments extends Component {
             ]
         };
       }
+
+    renderComment(commnent) {
+        return <GroundComment key={commnent.id} CommentData={commnent}/>
+    } 
     render() {
         let {commnents}=this.state;
-        let markup = commnents.map(commnent=> {
-            if(commnent!=null){
-                return <GroundComment key={commnent.id} CommentData={commnent}/>
-            }
-        })
-
         return (
             <section className="comment">
                 <div className="comment-header">
@@ -39,7 +36,9 @@ export default class Comments extends Component {
                 </div>
                 <br/>
                 <div className="comment-detail">
-                    {markup}
+                    {commnents.map(comment=>{
+                        return this.renderComment(comment)
+                    })}
                 </div>
             </section>
         );

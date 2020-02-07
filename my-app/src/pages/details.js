@@ -3,22 +3,33 @@ import React, { Component } from 'react';
 import { Row, Col } from 'antd';
 import Comments from '../components/Comments/Comments';
 import Histories from '../components/Ground-history/Histories';
-import { PageHeader, Button, Descriptions } from 'antd';
+import { PageHeader} from 'antd';
 import { Radio} from 'antd';
-import { Card,Comment, Icon, Tooltip, Avatar } from 'antd';
+import { Comment, Avatar } from 'antd';
 import { Rate } from 'antd';
 
 export default class details extends Component {
     
-    state = {
-        stradium:"Old Trafford",
-        description:"Sir Matt Busby Way, Stretford, Manchester M16 0RA, United Kingdom",
-        onwer:'Han Solo',
-        price:25
-      }
+    // state = {
+    //     stradium:"Old Trafford",
+    //     description:"Sir Matt Busby Way, Stretford, Manchester M16 0RA, United Kingdom",
+    //     onwer:'Han Solo',
+        //    owner
+    //   }
 
+    componentDidMount(){
+        let groundId=this.props.match.params.id;
+        this.props.onGetSingleGrounds(groundId);
+    }
     render() {
-        const {stradium,description,onwer,price}= this.state;
+        //  const {stradium,description,onwer,price}= this.state;
+        console.log('detail props '+this.props);
+        let g=this.props.grounds.ground;
+        console.log(g)
+        const {ground:{
+            id, imageURL, description, price,owner,title}
+        }= this.props.grounds;
+
         return (
             <div className='container'>
                 <Row>
@@ -35,7 +46,7 @@ export default class details extends Component {
                    <section className="stradium-image">
                     <img   width='100%'
                             alt=""
-                            src="https://upload.wikimedia.org/wikipedia/commons/e/ec/Tottenham_Hotspur_Stadium_June_2019%2C_view_from_East.jpg"
+                            src={imageURL}
                                 />  
                     </section>
                     <section className="commnent">
@@ -46,7 +57,7 @@ export default class details extends Component {
                 <Col span={6} >
                     <section className="ground-title">
                         <div className='tradium-name'>
-                           <p >{stradium}</p>
+                           <p >{title}</p>
                         </div>
                         <div className="tradium-address">
                         <p>{description}</p>
@@ -58,8 +69,8 @@ export default class details extends Component {
                     <section className="onwer">
                     <Comment
                         author={<div className='user-info'>
-                             <a>{onwer}</a>
-                             <p>Onwer</p>
+                             <a>{owner}</a>
+                             <p>Owner</p>
                            </div>
                          }
                             avatar={

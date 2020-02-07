@@ -8,6 +8,7 @@ export default class Histories extends Component {
         this.state = {
             histories:[
                 {
+                    "id":1,
                     "league":"Champain League",
                     "images":"https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRH4BxnsOFhhL3OUeCTgUa8r1jR5Mhge8250ZDLgeqnOTc95rII",
                     "teams":12,
@@ -17,12 +18,11 @@ export default class Histories extends Component {
             ]
         };
       }
+    renderHistories(history){
+        return <History key={history.id} history={history}/>
+    }
     render() {
         let { histories }=this.state;
-        let markup = histories.map(history=> {
-            return <History key={history.id} history={history}/>
-        })
-        
         return (
             <section  className="comment">
                 <div className="comment-header">
@@ -30,7 +30,9 @@ export default class Histories extends Component {
                 </div>
                 <br/>
                 <div className="comment-detail">
-                    {markup}
+                    {histories.map(h=>{
+                        return this.renderHistories(h)
+                    })}
                 </div>
             </section>
         );

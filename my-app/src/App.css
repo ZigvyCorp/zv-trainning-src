@@ -216,17 +216,13 @@
   background:  #aab4bf;
 }
 
-
 .ant-select-selection.ant-select-selection--single {
   border: none
 }
 
-
-
 .ant-page-header-heading-extra{
  justify-content: space-evenly;
 }
-
 
 .ant-select-selection__placeholder, .ant-select-search__field__placeholder {
   color:black;
@@ -268,7 +264,6 @@
   text-align: left;
 }
 
-
 .round-title{
   width: 100%;
 }
@@ -296,14 +291,15 @@
 /* Comment */
 
   .user-info{
-    display: inline;
-    justify-content: left;
     text-align: left;
   }
   .user-info a{
     color: black;
     font-weight: bold;
     font-size: 1rem;
+  }
+  .user-info p{
+    display:block
   }
 
   .comment-content{
