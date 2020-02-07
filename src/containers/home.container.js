@@ -1,7 +1,6 @@
-import Home from './../pages/Home'
 import { connect } from 'react-redux'
-import { FETCHING_GROUNDS } from '../contants'
 import { GroundAction } from '../actions/ground.action'
+import Home from '../pages/Home'
 
 const mapStateToProps = (state) => {
     return {
@@ -9,10 +8,8 @@ const mapStateToProps = (state) => {
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        getRounds: (filter) => dispatch(GroundAction.getAll(filter))
-    }
+const mapDispatchToProps = {
+    getRounds: GroundAction.getAll
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home)

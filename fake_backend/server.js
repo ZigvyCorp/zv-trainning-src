@@ -9,7 +9,7 @@ const grounds = require('./data.json')
 
 app.get('/api/grounds', (req, res) => {
     let rnd = randomIntFromInterval(0, 10)
-    if (rnd >= 0) {
+    if (rnd >= 10) {
         const { sort_by, filter, search } = req.query;
         let groundsResult = grounds;
 

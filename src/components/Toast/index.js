@@ -1,15 +1,15 @@
-import React from 'react'
-import { ToastContainer, toast } from 'react-toastify'
-import { Button } from 'antd'
-import 'react-toastify/dist/ReactToastify.css';
+import React from 'react';
 import { connect } from 'react-redux';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { NotiAction } from '../../actions/notification.action';
-import { TIME_RETRY, MAX_RETRIES } from '../../config';
+import { TIME_RETRY } from '../../config';
+import CountDown from '../CountDown';
 
 const Toast = ({ isOpenRetry, onClose, duration, msg }) => {
     let toastId = null;
-    console.log(msg)
-    const retry = () => toastId = toast.error(msg, {
+    let message = msg || <RetryCountDown seconds={duration} />
+    const retry = () => toastId = toast.error(message, {
         position: "top-right",
         autoClose: TIME_RETRY * duration,
         hideProgressBar: false,
@@ -26,8 +26,8 @@ const Toast = ({ isOpenRetry, onClose, duration, msg }) => {
     }
 
     return (
-        <ToastContainer
-        />
+        <ToastContainer />
+        // <Timer seconds={10} />
     )
 }
 const mapStateToProps = (state) => {
@@ -44,3 +44,14 @@ const mapDispatchToProps = (dispatch) => ({
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Toast)
+
+
+const RetryCountDown = (props) => {
+    return (
+        <>
+            <span>Retry after</span>
+            {' '}
+            <CountDown {...props} />
+        </>
+    )
+}

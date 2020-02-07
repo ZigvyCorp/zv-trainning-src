@@ -1,6 +1,6 @@
 import React from 'react'
-import Home from "./containers/home.conatiner"
-import Info from "./pages/Info"
+import Home from './containers/home.container';
+import Info from './containers/info.container';
 
 const routes = [
     { path: '/', exact: true, component: <Home /> },

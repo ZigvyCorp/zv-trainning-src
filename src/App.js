@@ -6,11 +6,9 @@ import styled from 'styled-components';
 import './App.css';
 import FooterPage from './components/Footer';
 import HeaderPage from './components/Header';
-import store from './configureStore';
-import Home from './pages/Home';
-import Info from './pages/Info';
-import routes from './routes';
 import Toast from './components/Toast';
+import store from './configureStore';
+import routes from './routes';
 
 
 const { Content } = Layout;

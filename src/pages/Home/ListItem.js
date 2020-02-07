@@ -1,8 +1,6 @@
-import React from 'react'
-import { Card, Row, Col } from 'antd';
+import { Card, Col, Row } from 'antd';
+import React from 'react';
 import { useHistory } from 'react-router-dom';
-import PropTypes from 'prop-types'
-import { Link, Redriect } from 'react-router-dom';
 import Price from '../../components/Price';
 const { Meta } = Card;
 
