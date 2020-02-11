@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Stradiums from '../containers/stradiumsContainer';
-
-import { PageHeader, Button, Descriptions } from 'antd';
+import { PageHeader} from 'antd';
 import { Select } from 'antd';
 import { Input } from 'antd';
 
@@ -14,8 +13,7 @@ class home extends Component {
         return (
             <div className='container'>
                 <div>
-                    <PageHeader
-                   
+                    <PageHeader         
                     title="Grounds"
                     extra={[
                     <Select
@@ -55,7 +53,6 @@ class home extends Component {
                         <Option value="-1">No sorting</Option>
                         <Option value="1">Ascending</Option>
                         <Option value="0">Descending</Option>
- 
                       </Select>,
                        <Search className='search-ground'
                        placeholder="search by name"

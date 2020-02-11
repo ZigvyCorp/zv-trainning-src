@@ -10,19 +10,11 @@ import { Rate } from 'antd';
 
 export default class details extends Component {
     
-    // state = {
-    //     stradium:"Old Trafford",
-    //     description:"Sir Matt Busby Way, Stretford, Manchester M16 0RA, United Kingdom",
-    //     onwer:'Han Solo',
-        //    owner
-    //   }
-
     componentDidMount(){
         let groundId=this.props.match.params.id;
         this.props.onGetSingleGrounds(groundId);
     }
     render() {
-        //  const {stradium,description,onwer,price}= this.state;
         console.log('detail props '+this.props);
         let g=this.props.grounds.ground;
         console.log(g)
