@@ -1,0 +1,8 @@
+{
+  "name": "zv-trainning-src",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:taddy569/zv-trainning-src.git",
+  "author": "anhdt",
+  "license": "MIT"
+}
